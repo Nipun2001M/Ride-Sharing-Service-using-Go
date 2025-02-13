@@ -5,8 +5,7 @@ import (
 	"log"
 	"net/http"
 	"ride-sharing-service/connection"
-
-	"github.com/gorilla/mux"
+	"ride-sharing-service/routers"
 )
 
 func main(){
@@ -20,7 +19,12 @@ func main(){
         fmt.Println("Sucessfully Connected to Database...")
     }
 
-    router:=mux.NewRouter()
+	// err:= db.AutoMigrate(&model.User{}, &model.Ride{}, &model.Rider{})
+    // if err!=nil{
+    //     fmt.Println("error in migration tables ",err)
+    // }
+    connection.RunMigrations()
+    router:=routers.GetRouter()
     fmt.Println("server running on port 8080")
     log.Fatal(http.ListenAndServe(":8080",router))
 
