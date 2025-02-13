@@ -14,6 +14,8 @@ func GetRouter() *mux.Router {
 	router.HandleFunc("/riders",handlers.AddRider).Methods("POST")
 	//book a ride
 	router.HandleFunc("/rides",handlers.BookRide).Methods("POST")
+	//riders can watch pending rides that only matches theres vehical type and ride's vehical type
+	router.HandleFunc("/rides/pending",handlers.GetPendingRides).Methods("GET")
 	
 
 	return router;
