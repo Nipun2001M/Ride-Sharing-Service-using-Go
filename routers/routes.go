@@ -23,6 +23,8 @@ func GetRouter() *mux.Router {
 	//user take ride by sending ride id
 	router.HandleFunc("/rides/{rideid}",handlers.GetRidebyId).Methods("GET")
 	//mark ride as completed by sending payment id
+	router.HandleFunc("/rides/pay",handlers.PayAndCompleteRide).Methods("PUT")
+
 	
 
 	return router;
