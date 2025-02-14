@@ -19,7 +19,7 @@ func GetRouter() *mux.Router {
 	//take ride by sending selected ride id and rider id
 	router.HandleFunc("/rides/take",handlers.TakeRide).Methods("PUT")
 	//user take his active-pending-completed-all ride
-	
+	router.HandleFunc("/rides/myrides",handlers.TakeUserRides).Methods("GET")
 	//user take ride by sending ride id
 
 	//mark ride as completed by sending payment id
